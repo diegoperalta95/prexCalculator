@@ -31,7 +31,7 @@ export default function Form(props) {
                 <TextInput
                     placeholder="Dolar en Prex" keyboardType="numeric" style={styles.inputs} onChange={e => setUsd(e.nativeEvent.text)} />
                 <TextInput
-                    placeholder="Cantidad a cargar" keyboardType="numeric" style={styles.inputs} onChange={e => setMoney(e.nativeEvent.text)} />
+                    placeholder="Cantidad a gastar" keyboardType="numeric" style={styles.inputs} onChange={e => setMoney(e.nativeEvent.text)} />
             </View>
         </View>
     )

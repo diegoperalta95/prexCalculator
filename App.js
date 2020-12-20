@@ -10,6 +10,7 @@ export default function App() {
   const [money, setMoney] = useState(null);
   const [currency, setCurrency] = useState(null);
   const [total, setTotal] = useState(null);
+  const [percen, setPercen] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
@@ -27,11 +28,14 @@ export default function App() {
     } else if (!money) {
       setErrorMsg("Ingrese la cantidad de dinero a cargar en pesos");
     } else {
+      setUsd(usd.replace(',','.'));
+      setMoney(money.replace(',','.'));
       const porcen = parseFloat((2.5 * money) / 100);
       const husf = parseFloat(usd / 2);
       const adding = parseFloat(husf + porcen);
       const iva = parseFloat((21 * adding) / 100);
       const total = parseFloat(money) + parseFloat(iva) + parseFloat(adding);
+      setPercen((parseFloat(adding) + parseFloat(iva)).toFixed(3));
 
       setTotal({
         total: total.toFixed(3).replace(".", ","),
@@ -54,7 +58,7 @@ export default function App() {
         <Form setUsd={setUsd} setMoney={setMoney} setCurrency={setCurrency} />
       </SafeAreaView>
 
-      <Result errorMsg={errorMsg} money={money} usd={usd} currency={currency} total={total}/>
+      <Result errorMsg={errorMsg} money={money} usd={usd} currency={currency} total={total} percen={percen}/>
 
       <Footer calculate={calculate} />
 

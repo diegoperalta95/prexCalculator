@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 export default function Result(props) {
-    const { money, currency, total, usd, errorMsg } = props;
+    const { money, currency, total, usd, errorMsg, percen } = props;
 
     return (
         <View style={styles.resultContent}>
@@ -10,7 +10,8 @@ export default function Result(props) {
                 <View style={styles.resultBox}>
                     <Text style={styles.title}>Desglose:</Text>
                     <FormatData title={"Total a cargar: "} value={money + ' ' + currency} />
-                    <FormatData title={"Total: "} value={total.total + ' ' + currency} />
+                    <FormatData title={"Total que prex cargara: "} value={total.total + ' ' + currency} />
+                    <Text style={[styles.littleText,styles.centerText]}>Cartilla de uso (2.5% + 0.5USD) + IVA: {percen}</Text>
                 </View>
             )}
             <View>
@@ -54,5 +55,11 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 10,
+    },
+    littleText: {
+        fontSize: 12,
+    },
+    centerText: {
+        textAlign: "center",
     }
 })
